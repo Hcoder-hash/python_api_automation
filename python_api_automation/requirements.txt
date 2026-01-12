@@ -1,0 +1,4 @@
+robotframework
+robotframework-requests
+python-dotenv
+faker
