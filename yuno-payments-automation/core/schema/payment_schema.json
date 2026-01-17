@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Payment Response Schema",
+  "description": "Schema for validating payment API responses",
+  "type": "object",
+  "properties": {
+    "transaction_id": {
+      "type": "string",
+      "description": "Unique transaction identifier"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PENDING", "COMPLETED", "FAILED", "CANCELLED", "REFUNDED", "AUTHORIZED"],
+      "description": "Payment status"
+    },
+    "amount": {
+      "type": "integer",
+      "description": "Transaction amount in smallest currency unit"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code (ISO 4217)"
+    },
+    "merchant_id": {
+      "type": "string",
+      "description": "Merchant identifier"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Transaction creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Transaction last update timestamp"
+    },
+    "payment_method": {
+      "type": "object",
+      "description": "Payment method details",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["CARD", "BANK_TRANSFER", "WALLET"]
+        },
+        "last_four": {
+          "type": "string",
+          "description": "Last 4 digits of card"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "description": "Error details if transaction failed",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["transaction_id", "status", "amount", "currency"],
+  "additionalProperties": true
+}

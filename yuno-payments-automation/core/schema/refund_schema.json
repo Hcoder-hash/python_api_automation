@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Refund Response Schema",
+  "description": "Schema for validating refund API responses",
+  "type": "object",
+  "properties": {
+    "refund_id": {
+      "type": "string",
+      "description": "Unique refund identifier"
+    },
+    "transaction_id": {
+      "type": "string",
+      "description": "Original transaction identifier"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PENDING", "COMPLETED", "FAILED", "REJECTED"],
+      "description": "Refund status"
+    },
+    "amount": {
+      "type": "integer",
+      "description": "Refund amount in smallest currency unit"
+    },
+    "refund_type": {
+      "type": "string",
+      "enum": ["FULL", "PARTIAL"],
+      "description": "Type of refund"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency code (ISO 4217)"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Refund reason"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Refund creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Refund last update timestamp"
+    },
+    "error": {
+      "type": "object",
+      "description": "Error details if refund failed",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["refund_id", "transaction_id", "status"],
+  "additionalProperties": true
+}

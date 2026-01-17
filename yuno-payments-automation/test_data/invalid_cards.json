@@ -1,0 +1,99 @@
+{
+  "invalid_cards": [
+    {
+      "card_number": "4000000000000002",
+      "card_holder": "TEST USER",
+      "cvv": "123",
+      "expiry": "12/25",
+      "brand": "VISA",
+      "status": "INVALID",
+      "reason": "Insufficient Funds",
+      "description": "Card with insufficient funds"
+    },
+    {
+      "card_number": "4000000000000069",
+      "card_holder": "TEST USER",
+      "cvv": "123",
+      "expiry": "01/20",
+      "brand": "VISA",
+      "status": "INVALID",
+      "reason": "Card Expired",
+      "description": "Expired card"
+    },
+    {
+      "card_number": "4000000000000127",
+      "card_holder": "TEST USER",
+      "cvv": "123",
+      "expiry": "12/25",
+      "brand": "VISA",
+      "status": "INVALID",
+      "reason": "Lost Card",
+      "description": "Flagged/Lost card"
+    },
+    {
+      "card_number": "4000000000000035",
+      "card_holder": "TEST USER",
+      "cvv": "123",
+      "expiry": "12/25",
+      "brand": "VISA",
+      "status": "INVALID",
+      "reason": "Stolen Card",
+      "description": "Flagged/Stolen card"
+    },
+    {
+      "card_number": "378282246310006",
+      "card_holder": "TEST USER",
+      "cvv": "12",
+      "expiry": "12/25",
+      "brand": "AMEX",
+      "status": "INVALID",
+      "reason": "Invalid CVV",
+      "description": "Invalid CVV format"
+    },
+    {
+      "card_number": "1234567890123456",
+      "card_holder": "TEST USER",
+      "cvv": "123",
+      "expiry": "12/25",
+      "brand": "UNKNOWN",
+      "status": "INVALID",
+      "reason": "Invalid Card Number",
+      "description": "Completely invalid card number"
+    },
+    {
+      "card_number": "4532015112830367",
+      "card_holder": "TEST USER",
+      "cvv": "999",
+      "expiry": "12/25",
+      "brand": "VISA",
+      "status": "INVALID",
+      "reason": "Luhn Check Failed",
+      "description": "Card fails luhn validation"
+    }
+  ],
+  "error_scenarios": [
+    {
+      "scenario": "Null Card Number",
+      "card_number": null,
+      "expected_error": "Card number is required"
+    },
+    {
+      "scenario": "Missing CVV",
+      "card_number": "4532015112830366",
+      "cvv": null,
+      "expected_error": "CVV is required"
+    },
+    {
+      "scenario": "Invalid Expiry Format",
+      "card_number": "4532015112830366",
+      "expiry": "13/25",
+      "expected_error": "Invalid expiry date"
+    },
+    {
+      "scenario": "Empty Card Holder",
+      "card_number": "4532015112830366",
+      "card_holder": "",
+      "expected_error": "Card holder name is required"
+    }
+  ]
+}
